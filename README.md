@@ -7,3 +7,5 @@ Repozytorium z materiałami:
 | Termin            | Materiał    |
 |-------------------|-------------|
 | 23.09.2017        | Konfiguracja środowiska |
+| 01.10.2017        | [Gra w zgadywanie](./01-guessing-game.md) |
+
