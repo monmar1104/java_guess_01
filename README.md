@@ -8,4 +8,5 @@ Repozytorium z materiałami:
 |-------------------|-------------|
 | 23.09.2017        | Konfiguracja środowiska |
 | 01.10.2017        | [Gra w zgadywanie](./01-guessing-game.md) |
+| 14.10.2017        | [Analiza pliku](./02-file-analyzer.md) |
 
