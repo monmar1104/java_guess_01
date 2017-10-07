@@ -11,10 +11,13 @@ public class App
 {
     public static void main( String[] args )
     {
+        int i = 0;
         InputStream activitiesStream = App.class.getClassLoader().getResourceAsStream("activities.csv");
         Scanner scanner = new Scanner(activitiesStream).useDelimiter("\n");
         while (scanner.hasNext()) {
             System.out.println(scanner.next());
+            i++;
         }
+        System.out.println("Activities: "+(i-1));
     }
 }
