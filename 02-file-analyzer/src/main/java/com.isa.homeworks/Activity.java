@@ -1,6 +1,6 @@
 package com.isa.homeworks;
 
-public class Activity {
+class Activity {
     private String activityName;
     //private String activityCategoryName;
     private int activitySpentTime;
@@ -8,28 +8,27 @@ public class Activity {
     private int activityStartHour;
 
 
-
-    public String getActivityName() {
+    String getActivityName() {
         return activityName;
     }
 
-    public void setActivityName(String activityName) {
+    void setActivityName(String activityName) {
         this.activityName = activityName;
     }
 
-    public int getActivitySpentTime() {
+    int getActivitySpentTime() {
         return activitySpentTime;
     }
 
-    public void setActivitySpentTime(int activitySpentTime) {
+    void setActivitySpentTime(int activitySpentTime) {
         this.activitySpentTime = activitySpentTime;
     }
 
-    public int getActivityStartHour() {
+    int getActivityStartHour() {
         return activityStartHour;
     }
 
-    public void setActivityStartHour(int activityStartHour) {
+    void setActivityStartHour(int activityStartHour) {
         this.activityStartHour = activityStartHour;
     }
 }
