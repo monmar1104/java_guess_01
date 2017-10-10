@@ -1,8 +1,6 @@
 package com.isa.homeworks;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 
 class Statistics {
 
