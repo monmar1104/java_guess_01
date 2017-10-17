@@ -2,11 +2,12 @@
 
 Każdemu zrobiłem code review z drugiego projektu pracy domowej.
 
-Zadanie na ten tydzień:
-- Skonfigurowanie kompilatora maven do wersji Java 8
-- Skonfigurowanie pluginu do budowania JAR
-- Stworzenie JAR i zacommitowanie go w głównym katalogu
-- Wprowadzenie zasugerowanych przeze mnie poprawek (indywidualne code review wysłane do każdego)
+##### Zadanie na ten tydzień:
+Zmodyfikuj projekt 02-file-analyzer:
+- Skonfiguruj kompilator w maven do wersji Java 8
+- Skonfiguruj plugin do budowania JAR
+- Stwórz JAR z pomocą celu maven (nie rób tego ręcznie) i zacommituj go w głównym katalogu
+- Wprowadzenie zasugerowanych przeze mnie poprawek (indywidualne code review wysłane na slacku)
 
 Skorzystajcie z materiałów w slajdach trenera.
 
@@ -16,5 +17,5 @@ Punktacja:
 
 Po zakończonej pracy, podeślijcie mi screenshota z konsoli z uruchomionym JARem:
 ```
-java -jar 02-file-analyser.jar
+java -jar 02-file-analyzer.jar
 ```
