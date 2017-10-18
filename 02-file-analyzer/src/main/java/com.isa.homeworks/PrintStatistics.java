@@ -26,14 +26,17 @@ class PrintStatistics {
     }
 
     void printFacebookHours() {
-        for (int i = 0; i < statistics.getFacebookHours().size(); i++) {
+        int i = 0;
+        for (Integer s : statistics.getFacebookHours()) {
             if (i == 0) {
-                System.out.print("3) Godziny na facebooku: " + statistics.getFacebookHours().get(i));
+                System.out.print("3) Godziny na facebooku: " + s.intValue());
             } else if (i == statistics.getFacebookHours().size() - 1) {
-                System.out.println(", " + statistics.getFacebookHours().get(i));
+                System.out.println(", " + s.intValue());
+
             } else {
-                System.out.print(", " + statistics.getFacebookHours().get(i));
+                System.out.print(", " + s.intValue());
             }
+            i++;
         }
 
     }
