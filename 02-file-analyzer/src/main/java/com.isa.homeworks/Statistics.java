@@ -5,7 +5,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 class Statistics {
-
     private int sum = 0;
     private Set<Integer> facebookHours = new TreeSet<>();
     private ArrayList<Integer> hoursList = new ArrayList<>();
