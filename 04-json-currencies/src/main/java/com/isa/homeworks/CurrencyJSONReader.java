@@ -27,23 +27,24 @@ class CurrencyJSONReader {
     void printCurrency() {
         CurrencyJSONReader currencyJSONReader = new CurrencyJSONReader();
         Currencies currencies = currencyJSONReader.getCurrency();
-
-        System.out.println(currencies.getBaseCurrency().
-
-                getName() + ":" + currencies.getBaseCurrency().
-
-                getVallue());
+        System.out.println(" ");
+        System.out.println("=============Kursy walut==============");
+        System.out.println(currencies.getBaseCurrency().getName()
+                + "[" + currencies.getBaseCurrency().getCode() + "]"
+                + " : " +
+                currencies.getBaseCurrency().getVallue());
 
         for (
                 BaseCurrency bc : currencies.getCurrencies())
 
         {
-            System.out.println(bc.getName() + ":" + bc.getVallue());
+            System.out.println(bc.getName() + "[" + bc.getCode() + "]" + " : " + bc.getVallue());
 
         }
+        System.out.println("");
     }
 
-    void showCurrencyConversion(){
+    void showCurrencyConversion() {
 
         Scanner scanner = new Scanner(System.in);
         double keyValue;
@@ -58,66 +59,68 @@ class CurrencyJSONReader {
         boolean checker = true;
         while (checker) {
 
-            System.out.print("Podaj ilość wyluty: [" + currencyList + "]: ");
+            System.out.print("Podaj ilość wyluty: ");
             try {
 
                 keyValue = Double.valueOf(scanner.nextLine());
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Podałeś nie prawidłową wartość!!! Musisz podać liczbę");
                 continue;
             }
-            System.out.print("Podaj walutę, którą chcesz przliczyć: ");
+            System.out.println("");
+            System.out.println("Podaj walutę, którą chcesz przliczyć: ");
+            System.out.print("Wpisz kod z listy [" + currencyList + "]: ");
             keyCurrencyIn = scanner.nextLine();
-            System.out.print("Podaj rodzaj waluty który chcesz otrzymać: ");
+            System.out.println("");
+            System.out.println("Podaj rodzaj waluty który chcesz otrzymać: ");
+            System.out.print("Wpisz kod z listy [" + currencyList + "]: ");
             keyCurrencyOut = scanner.nextLine();
+            System.out.println("");
 
             currencyIn = getCurrencyIn(keyCurrencyIn.toUpperCase());
             currencyOut = getCurrencyIn(keyCurrencyOut.toUpperCase());
-            if(currencyIn!=null && currencyOut!=null) {
+            if (currencyIn != null && currencyOut != null) {
                 double result = keyValue * currencyIn.getVallue() / currencyOut.getVallue();
                 System.out.println("Wymiana " + keyValue + " " + currencyIn.getCode() + " kosztuje " + BigDecimal.valueOf(result).setScale(2, 0) + " " + currencyOut.getCode());
                 System.out.println();
-                checker=false;
-            }else {
+                checker = false;
+            } else {
                 System.out.println("Wprowadzone dane są niepoprawne. Spróbuj jeszcze raz.");
             }
         }
 
 
-
     }
 
 
-    BaseCurrency getCurrencyIn(String currencyCode){
+    BaseCurrency getCurrencyIn(String currencyCode) {
         BaseCurrency baseCurrency = new BaseCurrency();
-        for (BaseCurrency bc : getCurrency().getCurrencies()){
-            if(currencyCode.equals(bc.getCode())){
+        for (BaseCurrency bc : getCurrency().getCurrencies()) {
+            if (currencyCode.equals(bc.getCode())) {
                 baseCurrency.setCode(bc.getCode());
                 baseCurrency.setName(bc.getName());
                 baseCurrency.setVallue(bc.getVallue());
                 return baseCurrency;
             }
         }
-        if (currencyCode.equals(getCurrency().getBaseCurrency().getCode())){
+        if (currencyCode.equals(getCurrency().getBaseCurrency().getCode())) {
             baseCurrency.setCode(getCurrency().getBaseCurrency().getCode());
             baseCurrency.setName(getCurrency().getBaseCurrency().getName());
             baseCurrency.setVallue(getCurrency().getBaseCurrency().getVallue());
             return baseCurrency;
-        }else return null;
+        } else return null;
     }
 
 
-
-    StringBuilder getCurrencyList(){
+    StringBuilder getCurrencyList() {
         Currencies currency = getCurrency();
         StringBuilder currencyList = new StringBuilder();
 
         currencyList.append(currency.getBaseCurrency().getCode()).append(" ");
-        for (BaseCurrency currencyName:currency.getCurrencies()) {
+        for (BaseCurrency currencyName : currency.getCurrencies()) {
 
-           currencyList.append(", ")
-                          .append(currencyName.getCode());
+            currencyList.append(", ")
+                    .append(currencyName.getCode());
         }
         return currencyList;
     }
