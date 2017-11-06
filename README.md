@@ -11,6 +11,7 @@ Repozytorium z materiałami:
 | 14.10.2017        | [Analiza pliku](./02-file-analyzer.md) |
 | 21.10.2017        | [Maven + code improvements](./03-maven-improvements.md) |
 | 28.10.2017        | [JSON + Currencies](./04-json-currencies/) |
+| 18.11.2017        | [Java 8 + jUnit](./05-java8-junit.md)
 
 
 ## Ogólne warunki zaliczenia
