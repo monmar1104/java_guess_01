@@ -1,13 +1,8 @@
-package java8demo;
-
 import java.time.Clock;
 import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -32,7 +27,22 @@ import java.util.stream.Collectors;
  * Używając metody z interfejsu "printStartTime" na początku metody "main",
  * wyświetl datę uruchomienia operacji wyliczenia wartości min/max.
  */
+
+/**
+ * Zadanie nr 7 (pakiet streams)
+ Niech metoda "getIntegersForDemo" w interfejsie "MathResults"
+ zwraca listę dowolnych 10_000_000 liczb.
+
+ W metodzie "getIntegersForDemo" klasy "Java8Demo" odwołaj się
+ do metody nadpisywanej (słowo kluczowe super) i pobierz powyższe dane testowe z interfejsu.
+ Następnie użyj strumieni w metodzie nadpisującej tak, aby każdy element z danych testowych
+ przemnożyć przez -1 oraz usunąć z nich wszystkie liczby parzyste.
+ */
+
+
+
 public class Java8Demo implements MathResults {
+
     public static void main(String args[]) {
         Clock clock = Clock.systemDefaultZone();
         long start = clock.millis();
@@ -49,6 +59,7 @@ public class Java8Demo implements MathResults {
         System.out.println(ZoneId.getAvailableZoneIds().stream().filter(s->s.contains("W")).collect(Collectors.toList()));
         long stop  =clock.millis();
         MathResults.printDuration(Duration.ofMillis(stop-start));
+
     }
 
     private void getResult(Optional<List<Integer>> integers,
@@ -62,6 +73,7 @@ public class Java8Demo implements MathResults {
 
     @Override
     public List<Integer> getIntegersForDemo() {
-        return Arrays.asList(-2, -22, 4, 0, 1);
+        List<Integer> evenNumbers = MathResults.super.getIntegersForDemo();
+        return evenNumbers.stream().map(i -> -i).filter(i -> i%2!=0).collect(Collectors.toList());
     }
 }

@@ -1,12 +1,10 @@
-package java8demo;
-
-import examples.date_time.ZonedDateTimeDemo;
-
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public interface MathResults {
 
@@ -19,7 +17,14 @@ public interface MathResults {
     }
 
     default List<Integer> getIntegersForDemo() {
-        return null;
+        List<Integer> randomIntegersList = new ArrayList<>();
+        Random randomInt = new Random();
+        int n = 10000000;
+
+        for (int i = 0; i<n; i++){
+            randomIntegersList.add(randomInt.nextInt(n));
+        }
+        return randomIntegersList;
     }
 
     static void printStartTime(ZonedDateTime zonedDateTime){
@@ -29,6 +34,6 @@ public interface MathResults {
     }
 
     static void printDuration(Duration duration){
-        System.out.println("Czas wykonania operacji: "+duration.getSeconds());
+        System.out.println("Czas wykonania operacji (sekund): "+duration.getSeconds());
     }
 }
