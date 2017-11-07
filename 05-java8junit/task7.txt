@@ -1,0 +1,8 @@
+Zadanie nr 7 (pakiet streams)
+Niech metoda "getIntegersForDemo" w interfejsie "MathResults"
+zwraca listę dowolnych 10_000_000 liczb.
+
+W metodzie "getIntegersForDemo" klasy "Java8Demo" odwołaj się
+do metody nadpisywanej (słowo kluczowe super) i pobierz powyższe dane testowe z interfejsu.
+Następnie użyj strumieni w metodzie nadpisującej tak, aby każdy element z danych testowych
+przemnożyć przez -1 oraz usunąć z nich wszystkie liczby parzyste.

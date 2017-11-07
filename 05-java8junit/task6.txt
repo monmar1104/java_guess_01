@@ -1,0 +1,19 @@
+Zadanie nr 6 (pakiet date_time)
+W klasie "Java8Demo" zmodyfikuj metodę "getIntegersForDemo" tak,
+aby zwracała np. 10_000_000 dowolnych liczb.
+
+Do interfejsu "MathResults" dodaj statyczną metodę "printStartTime",
+która przyjmuję parametr typu "ZonedDateTime" i nie zwraca żadnej wartości.
+Metoda ta ma za zadanie wyświetlić "Data uruchomienia operacji = X",
+gdzie data będzie wyświetlona przy użyciu "DateTimeFormatter" (FormatStyle.FULL).
+
+Do interfejsu dodaj także statyczną metodę "printDuration",
+która przyjmuje parametr typu "Duration" i nie zwraca żadnej wartości.
+Metoda ma za zadanie wyświetlić "Czas wykonania operacji (sekund) = X",
+gdzie podana będzie liczba sekund.
+
+Przy użyciu klasy "Clock" wylicz czas od uruchomienia do zakończenia działania metody "main".
+Powyższy rezultat wyświetl używając metody "printDuration" z interfejsu.
+
+Używając metody z interfejsu "printStartTime" na początku metody "main",
+wyświetl datę uruchomienia operacji wyliczenia wartości min/max.
