@@ -30,15 +30,14 @@ import java.util.stream.Collectors;
 
 /**
  * Zadanie nr 7 (pakiet streams)
- Niech metoda "getIntegersForDemo" w interfejsie "MathResults"
- zwraca listę dowolnych 10_000_000 liczb.
-
- W metodzie "getIntegersForDemo" klasy "Java8Demo" odwołaj się
- do metody nadpisywanej (słowo kluczowe super) i pobierz powyższe dane testowe z interfejsu.
- Następnie użyj strumieni w metodzie nadpisującej tak, aby każdy element z danych testowych
- przemnożyć przez -1 oraz usunąć z nich wszystkie liczby parzyste.
+ * Niech metoda "getIntegersForDemo" w interfejsie "MathResults"
+ * zwraca listę dowolnych 10_000_000 liczb.
+ * <p>
+ * W metodzie "getIntegersForDemo" klasy "Java8Demo" odwołaj się
+ * do metody nadpisywanej (słowo kluczowe super) i pobierz powyższe dane testowe z interfejsu.
+ * Następnie użyj strumieni w metodzie nadpisującej tak, aby każdy element z danych testowych
+ * przemnożyć przez -1 oraz usunąć z nich wszystkie liczby parzyste.
  */
-
 
 
 public class Java8Demo implements MathResults {
@@ -55,10 +54,10 @@ public class Java8Demo implements MathResults {
 
         java8Demo.getResult(integers, Collections::min, MathResults::printMin);
 
-        MathResults.printStartTime(ZonedDateTime.of(2021,8,4,10,22,33,0, ZoneId.of("Europe/Warsaw")));
-        System.out.println(ZoneId.getAvailableZoneIds().stream().filter(s->s.contains("W")).collect(Collectors.toList()));
-        long stop  =clock.millis();
-        MathResults.printDuration(Duration.ofMillis(stop-start));
+        MathResults.printStartTime(ZonedDateTime.of(2021, 8, 4, 10, 22, 33, 0, ZoneId.of("Europe/Warsaw")));
+        System.out.println(ZoneId.getAvailableZoneIds().stream().filter(s -> s.contains("W")).collect(Collectors.toList()));
+        long stop = clock.millis();
+        MathResults.printDuration(Duration.ofMillis(stop - start));
 
     }
 
@@ -74,6 +73,6 @@ public class Java8Demo implements MathResults {
     @Override
     public List<Integer> getIntegersForDemo() {
         List<Integer> evenNumbers = MathResults.super.getIntegersForDemo();
-        return evenNumbers.stream().map(i -> -i).filter(i -> i%2!=0).collect(Collectors.toList());
+        return evenNumbers.stream().map(i -> -i).filter(i -> i % 2 != 0).collect(Collectors.toList());
     }
 }

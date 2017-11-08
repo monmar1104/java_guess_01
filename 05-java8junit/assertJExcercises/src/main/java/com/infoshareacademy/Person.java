@@ -1,5 +1,5 @@
 
-package com.infoshareacademy.assertj.showcase;
+package com.infoshareacademy;
 
 public class Person {
 

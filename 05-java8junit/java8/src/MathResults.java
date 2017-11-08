@@ -20,20 +20,19 @@ public interface MathResults {
         List<Integer> randomIntegersList = new ArrayList<>();
         Random randomInt = new Random();
         int n = 10000000;
-
-        for (int i = 0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             randomIntegersList.add(randomInt.nextInt(n));
         }
         return randomIntegersList;
     }
 
-    static void printStartTime(ZonedDateTime zonedDateTime){
+    static void printStartTime(ZonedDateTime zonedDateTime) {
         DateTimeFormatter fullFormat = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL);
         String dateFormated = zonedDateTime.format(fullFormat);
-        System.out.println("Data uruchomienia operacji: "+dateFormated);
+        System.out.println("Data uruchomienia operacji: " + dateFormated);
     }
 
-    static void printDuration(Duration duration){
-        System.out.println("Czas wykonania operacji (sekund): "+duration.getSeconds());
+    static void printDuration(Duration duration) {
+        System.out.println("Czas wykonania operacji (sekund): " + duration.getSeconds());
     }
 }

@@ -1,4 +1,4 @@
-package com.infoshareacademy.com;
+package com.infoshareacademy;
 
 
 public class Math
@@ -6,7 +6,9 @@ public class Math
     public Integer dodaj(Integer ... args) {
         Integer sum = 0;
         for (Integer i : args) {
-            sum += i;
+            if(!i.equals(null)) {
+                sum += i;
+            }
         }
         return sum;
     }
