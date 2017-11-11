@@ -10,6 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class NamesStatsTest {
 
+    private NamesStats stat = new NamesStats();
+
+    private static Person p1 = new Person("Jas", "Fasola", 1900);
+    private static Person p3 = new Person("Jas", "Wędrowniczek", 1800);
+    private static Person p2 = new Person("Marcin", "Pastwa", 1800);
+    private static Person p4 = new Person("MARCIN", "PASTWA", 1800);
 
     private void statAddPerson(NamesStats stat, Person p1, Person p2) {
         stat.addPerson(p1);
@@ -20,9 +26,6 @@ public class NamesStatsTest {
     public void getUniqueNames_theSameNameTwice() {
         //given
         NamesStats stat = new NamesStats();
-        Person p1 = new Person("Jas", "Fasola", 1900);
-        Person p3 = new Person("Jas", "Wędrowniczek", 1800);
-
         //when:
         statAddPerson(stat, p1, p3);
         Set<String> uniqueNamesList = stat.getUniqueNames();
@@ -35,17 +38,12 @@ public class NamesStatsTest {
     }
 
 
-
-
     //     1 napisz test sprawdzający działanie metody getUniqueNames() gdy:
 //    a. dodajemy dwa różne imiona
     @Test
     public void getUniqueNames_TwoDifferentNames() {
         //given
         NamesStats stat = new NamesStats();
-        Person p1 = new Person("Jas", "Fasola", 1900);
-        Person p2 = new Person("Marcin", "Pastwa", 1800);
-
         //when:
         statAddPerson(stat, p1, p2);
         Set<String> uniqueNamesList = stat.getUniqueNames();
@@ -63,9 +61,6 @@ public class NamesStatsTest {
     public void getUniqueNames_TwoDifferentNamesOneBigLetters() {
         //given
         NamesStats stat = new NamesStats();
-        Person p1 = new Person("Jas", "Fasola", 1900);
-        Person p2 = new Person("MARCIN", "PASTWA", 1800);
-
         //when:
         statAddPerson(stat, p1, p2);
         Set<String> uniqueNamesList = stat.getUniqueNames();
@@ -79,12 +74,8 @@ public class NamesStatsTest {
     public void getNamesStats_threeNamesWithDifferentCapitalization_twoNamesReturned() {
         //given
         NamesStats stat = new NamesStats();
-        Person p1 = new Person("Jas", "Fasola", 1900);
-        Person p2 = new Person("MARCIN", "PASTWA", 1800);
-
-
         //when:
-        statAddPerson(stat, p1, p2);
+        statAddPerson(stat, p1, p4);
 
         Map<String, Integer> nameStats = stat.getNamesStats();
 
@@ -114,9 +105,6 @@ public class NamesStatsTest {
     public void createTextReport_twoNamesUpperCase() {
         //given
         NamesStats stat = new NamesStats();
-        Person p1 = new Person("Jas", "Fasola", 1900);
-        Person p2 = new Person("Marcin", "Pastwa", 1800);
-
         //when:
         statAddPerson(stat, p1, p2);
         String report = stat.createTextReport();
@@ -125,15 +113,5 @@ public class NamesStatsTest {
         assertThat(report).contains("JAS:\t\t1").contains("MARCIN:\t\t1").contains("RAPORT \n");
     }
 
-
-    /* todo D :
-     5. usuń duplikacje z kodu testów:
-        - użyj @Before
-        - użyj zmiennych statycznych do stworzenia obiektu typu Person
-        którego używasz w więcej niż jednym teście (upewnij się, że konstruktor
-            klasy Person dla takiego obiektu zostanie odpalony tylko raz)
-        - pomyśl jakie metody prywatne można stworzyć żeby uprościć kod klasy testowej
-
-    */
 }
 

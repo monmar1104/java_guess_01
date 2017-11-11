@@ -4,7 +4,14 @@ package com.infoshareacademy;
 
 import org.junit.*;
 
+import java.io.UncheckedIOException;
+
 public class OrderOfSpecialTestMethods {
+
+
+    public OrderOfSpecialTestMethods(){
+        System.out.println("Konstruktor");
+    }
 
     @Test
     public void test1() {
@@ -32,7 +39,7 @@ public class OrderOfSpecialTestMethods {
     }
 
     @After
-    public void after() {
+    public void after() throws UncheckedIOException {
         System.out.println("after");
     }
 

@@ -30,7 +30,7 @@ public class App
     public void increasePriceOfAllProducts(Integer perc) {
         List<Product> prodcs = productDao.getAllProducts();
         for (Product p : prodcs) {
-            Integer newPrice = p.getPrice() * ((100 + perc)/ 100);
+            Integer newPrice = (p.getPrice() * (100 + perc)/ 100);
             productDao.updatePrice(p,newPrice);
         }
     }

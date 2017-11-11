@@ -64,10 +64,10 @@ public class MathTest {
         Math math = new Math();
 
         // wywołanie metody którą testujemy (method under test)
-        Integer wynik = math.dodaj(1, null);
+        Integer wynik = math.dodaj(1, null,9,20);
 
         // weryfikacja wyników (asercja)
-        assertEquals((int)wynik, 1);
+        assertEquals((int)wynik, 30);
     }
 
 
