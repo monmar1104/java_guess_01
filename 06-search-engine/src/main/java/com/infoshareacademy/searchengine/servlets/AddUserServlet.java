@@ -14,24 +14,53 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("add-user")
-public class AddUserServlet extends HttpServlet{
+public class AddUserServlet extends HttpServlet {
     @Inject
     private UsersRepositoryDao userRepositoryDaoBean;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
-        user.setId(Integer.valueOf(request.getParameter("id")));
-        user.setName(request.getParameter("name"));
-        user.setSurname(request.getParameter("surname"));
-        user.setLogin(request.getParameter("login"));
-        user.setId(Integer.valueOf(request.getParameter("age")));
+
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String login = request.getParameter("login");
+        Integer age = Integer.valueOf(request.getParameter("age"));
+
+        if (id==null || name==null || surname==null || login==null || age==null){
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+
+        user.setId(id);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setLogin(login);
+        user.setAge(age);
         userRepositoryDaoBean.addUser(user);
 
-        List<User> userList=userRepositoryDaoBean.getUserList();
-
+        List<User> userList = userRepositoryDaoBean.getUserList();
+        if (isIdExist(userList, id)){
+            response.setStatus(HttpServletResponse.SC_CONFLICT);
+            return;
+        }
         PrintWriter writer = response.getWriter();
-        for (User u : userList){
+        printNames(userList, writer);
+
+    }
+
+    private boolean isIdExist(List<User> userList, Integer id){
+        for (User u:userList){
+            if (u.getId()==id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void printNames(List<User> userList, PrintWriter writer) {
+        for (User u : userList) {
             writer.println(u.getName());
         }
     }
