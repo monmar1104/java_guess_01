@@ -20,3 +20,11 @@ W ramach aplikacji tworzonej na zajęciach:
 
 - Nie pozwól na nadpisanie użytkownika z tym samym ID. Jeśli użytkownik o zadanym ID istnieje, należy zwrócić błąd w postaci kodu HTTP 409 Conflict.
 - Jesli dane w requeście są niekompletnie, zwróć błąd w postaci kodu HTTP 400 Bad Request.
+
+Zadanie 2.
+
+W ramach aplikacji tworzonej na zajęciach:
+- Stwórz nowe EJB `SearchStatistics`, które będzie odpowiedzialne za zbieranie informacji o liczbie zapytań o poszczególnych użytkowników.
+- W celu rezalizacji zadania utwórz nowe repozytorium, które będzie przechowywało zebrane dane w pamięci.
+- Stwórz servlet, który będzie wyświetlał aktualne statystyki wyszukiwań jako listę wszystkich użytkowników.
+- Po każdym wyszukaniu usera po jego ID, zaprezentuj liczbę zapytań o niego.

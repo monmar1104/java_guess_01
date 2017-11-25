@@ -13,6 +13,7 @@ Repozytorium z materiałami:
 | 28.10.2017        | [JSON + Currencies](./04-json-currencies/) |
 | 18.11.2017        | [Java 8 + jUnit](./05-java8-junit.md)
 | 25.11.2017        | [JEE Servlet](./06-jee-servlet.md)
+| 02.12.2017        | [JEE cz.2 - Statystyki](./06-jee-servlet.md)
 
 
 ## Ogólne warunki zaliczenia
