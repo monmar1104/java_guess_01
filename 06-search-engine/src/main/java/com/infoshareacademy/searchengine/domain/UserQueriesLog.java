@@ -1,10 +1,9 @@
 package com.infoshareacademy.searchengine.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class UserQueriesLog {
+
+public class UserQueriesLog implements Comparable<UserQueriesLog> {
     private int userID;
     private String userName;
     private LocalDateTime logDateTime;
@@ -32,5 +31,8 @@ public class UserQueriesLog {
 
     public void setLogDate(LocalDateTime logDateTime) {
         this.logDateTime = logDateTime;
+    }
+    public int compareTo(UserQueriesLog userQueriesLog){
+        return this.userName.compareTo(userQueriesLog.userName);
     }
 }
