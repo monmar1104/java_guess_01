@@ -17,10 +17,22 @@ public class SearchStatisticsBean implements SearchStatistics{
     }
 
     @Override
+    public int getNumberOfQueriesById(int userId) {
+
+        return (int)UserQueriesRepository
+                .getUserQueriesRepository()
+                .stream()
+                .filter(userQueriesLog -> userQueriesLog.getUserID()==userId)
+                .count();
+    }
+
+    @Override
     public List<UserQueriesLog> getUserQueriesById(int userId) {
-        List<UserQueriesLog> userQueriesLogList = UserQueriesRepository.getUserQueriesRepository().stream()
+        return UserQueriesRepository
+                .getUserQueriesRepository()
+                .stream()
                 .filter(userQueriesLog -> userQueriesLog.getUserID()==userId)
                 .collect(Collectors.toList());
-        return userQueriesLogList;
     }
+
 }

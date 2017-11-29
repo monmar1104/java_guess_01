@@ -1,10 +1,10 @@
 package com.infoshareacademy.searchengine.servlets;
 
-import com.infoshareacademy.searchengine.dao.UserRepositoryDaoBean;
+import com.infoshareacademy.searchengine.dao.SearchStatistics;
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
 import com.infoshareacademy.searchengine.domain.User;
+import com.infoshareacademy.searchengine.domain.UserQueriesLog;
 
-import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 
 @WebServlet("find-user-by-id")
 public class FindUserByIdServlet extends HttpServlet {
     @Inject
     private UsersRepositoryDao userRepositoryDaoBean;
+
+    @Inject
+    private SearchStatistics searchStatisticsBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -33,9 +37,14 @@ public class FindUserByIdServlet extends HttpServlet {
                 return ;
             }
                 PrintWriter writer = resp.getWriter();
-                writer.println(user.getName());
 
+        UserQueriesLog userQueriesLog = new UserQueriesLog();
+        userQueriesLog.setUserID(user.getId());
+        userQueriesLog.setUserName(user.getName());
+        userQueriesLog.setLogDate(LocalDateTime.now());
+        searchStatisticsBean.addUserQuery(userQueriesLog);
+        int numberOfQueries = searchStatisticsBean.getNumberOfQueriesById(user.getId());
 
-
+        writer.println("Ilość zapytań o użytkownika "+user.getName()+": "+numberOfQueries);
     }
 }

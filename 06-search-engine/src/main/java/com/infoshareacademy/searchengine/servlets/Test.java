@@ -39,14 +39,23 @@ public class Test {
         userQueriesLog3.setUserID(2);
         userQueriesLog3.setUserName("Monika");
         userQueriesLog3.setLogDate(LocalDateTime.now());
-
         UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog3);
 
+        UserQueriesLog userQueriesLog4 = new UserQueriesLog();
+        userQueriesLog4.setUserID(2);
+        userQueriesLog4.setUserName("Monika");
+        userQueriesLog4.setLogDate(LocalDateTime.now());
+        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog4);
+
         SearchStatistics searchStatistics = new SearchStatisticsBean();
-        List<UserQueriesLog> userQueriesLogList = searchStatistics.getUserQueriesById(2);
+        List<UserQueriesLog> userQueriesLogList = searchStatistics.getUserQueriesById(1);
+
+
 
         int count = (int)userQueriesLogList.stream().count();
-        System.out.println(count);
+        System.out.println("Ilość pytań o użytkownika "+userQueriesLogList.get(0).getUserName()+" wynosi "+ count);
+        int numberOfQueries = searchStatistics.getNumberOfQueriesById(1);
+        System.out.println("Ilość pytań o użytkownika "+userQueriesLogList.get(0).getUserName()+" wynosi "+ numberOfQueries);
 
 
 
