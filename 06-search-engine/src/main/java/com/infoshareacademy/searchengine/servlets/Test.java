@@ -23,23 +23,24 @@ public class Test {
 
     public static void main(String[] args) {
 
-        UserQueriesLog userQueriesLog = new UserQueriesLog();
+        UserQueriesLog userQueriesLog1 = new UserQueriesLog();
+        userQueriesLog1.setUserID(1);
+        userQueriesLog1.setUserName("Marcin");
+        userQueriesLog1.setLogDate(LocalDateTime.now());
+        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog1);
 
-        userQueriesLog.setUserID(1);
-        userQueriesLog.setUserName("Marcin");
-        userQueriesLog.setLogDate(LocalDateTime.now());
-        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog);
+        UserQueriesLog userQueriesLog2 = new UserQueriesLog();
+        userQueriesLog2.setUserID(2);
+        userQueriesLog2.setUserName("Monika");
+        userQueriesLog2.setLogDate(LocalDateTime.now());
+        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog2);
 
-        userQueriesLog.setUserID(2);
-        userQueriesLog.setUserName("Monika");
-        userQueriesLog.setLogDate(LocalDateTime.now());
-        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog);
+        UserQueriesLog userQueriesLog3 = new UserQueriesLog();
+        userQueriesLog3.setUserID(2);
+        userQueriesLog3.setUserName("Monika");
+        userQueriesLog3.setLogDate(LocalDateTime.now());
 
-        userQueriesLog.setUserID(2);
-        userQueriesLog.setUserName("Monika");
-        userQueriesLog.setLogDate(LocalDateTime.now());
-
-        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog);
+        UserQueriesRepository.getUserQueriesRepository().add(userQueriesLog3);
 
         SearchStatistics searchStatistics = new SearchStatisticsBean();
         List<UserQueriesLog> userQueriesLogList = searchStatistics.getUserQueriesById(2);
