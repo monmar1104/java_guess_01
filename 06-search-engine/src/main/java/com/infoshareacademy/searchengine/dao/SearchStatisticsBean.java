@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class SearchStatisticsBean implements SearchStatistics{
+public class SearchStatisticsBean implements SearchStatistics {
 
 
     @Override
@@ -19,10 +19,10 @@ public class SearchStatisticsBean implements SearchStatistics{
     @Override
     public int getNumberOfQueriesById(int userId) {
 
-        return (int)UserQueriesRepository
+        return (int) UserQueriesRepository
                 .getUserQueriesRepository()
                 .stream()
-                .filter(userQueriesLog -> userQueriesLog.getUserID()==userId)
+                .filter(userQueriesLog -> userQueriesLog.getUserID() == userId)
                 .count();
     }
 
@@ -31,7 +31,7 @@ public class SearchStatisticsBean implements SearchStatistics{
         return UserQueriesRepository
                 .getUserQueriesRepository()
                 .stream()
-                .filter(userQueriesLog -> userQueriesLog.getUserID()==userId)
+                .filter(userQueriesLog -> userQueriesLog.getUserID() == userId)
                 .collect(Collectors.toList());
     }
 

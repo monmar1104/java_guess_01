@@ -32,7 +32,8 @@ public class UserQueriesLog implements Comparable<UserQueriesLog> {
     public void setLogDate(LocalDateTime logDateTime) {
         this.logDateTime = logDateTime;
     }
-    public int compareTo(UserQueriesLog userQueriesLog){
+
+    public int compareTo(UserQueriesLog userQueriesLog) {
         return this.userName.compareTo(userQueriesLog.userName);
     }
 }

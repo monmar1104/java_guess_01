@@ -7,7 +7,8 @@ import java.util.List;
 
 public class UserQueriesRepository {
     private static List<UserQueriesLog> userQueriesLogList = new ArrayList<>();
-    public static List<UserQueriesLog> getUserQueriesRepository(){
+
+    public static List<UserQueriesLog> getUserQueriesRepository() {
         return userQueriesLogList;
     }
 }

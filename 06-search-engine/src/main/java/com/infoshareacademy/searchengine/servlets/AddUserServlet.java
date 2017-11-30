@@ -2,6 +2,7 @@ package com.infoshareacademy.searchengine.servlets;
 
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
 import com.infoshareacademy.searchengine.domain.User;
+
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class AddUserServlet extends HttpServlet {
         String login = request.getParameter("login");
         String age = request.getParameter("age");
 
-        if (id ==null || name == null || surname == null || login == null || age ==null) {
+        if (id == null || name == null || surname == null || login == null || age == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }

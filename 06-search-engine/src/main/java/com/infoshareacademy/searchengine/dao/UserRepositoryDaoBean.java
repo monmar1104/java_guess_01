@@ -6,6 +6,7 @@ import com.infoshareacademy.searchengine.repository.UsersRepository;
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import java.util.List;
+
 @Stateless
 public class UserRepositoryDaoBean implements UsersRepositoryDao {
 
@@ -18,8 +19,8 @@ public class UserRepositoryDaoBean implements UsersRepositoryDao {
     @Override
     public User getUserById(int id) {
         List<User> userList = UsersRepository.getRepository();
-        for(User user: userList){
-            if(user.getId()==id){
+        for (User user : userList) {
+            if (user.getId() == id) {
                 return user;
             }
 
@@ -29,9 +30,9 @@ public class UserRepositoryDaoBean implements UsersRepositoryDao {
 
     @Override
     public User getUserByLogin(String login) {
-        List<User> userList  = UsersRepository.getRepository();
-        for(User user : userList){
-            if (user.getLogin().equals(login)){
+        List<User> userList = UsersRepository.getRepository();
+        for (User user : userList) {
+            if (user.getLogin().equals(login)) {
                 return user;
             }
         }

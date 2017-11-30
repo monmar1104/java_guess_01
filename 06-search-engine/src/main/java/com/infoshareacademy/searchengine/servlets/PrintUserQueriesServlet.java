@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -24,14 +25,21 @@ public class PrintUserQueriesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserQueriesLog> userQueriesLogList = UserQueriesRepository.getUserQueriesRepository();
+        Collections.sort(userQueriesLogList);
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter printWriter = response.getWriter();
-        TreeSet<String> userNameList = new TreeSet<>();
-        for (UserQueriesLog userQueriesLog : userQueriesLogList){
-            String userName = userQueriesLog.getUserName();
-            if(!userNameList.contains(userName)) {
-                printWriter.println(userName + " " + searchStatisticsBean.getNumberOfQueriesById(userQueriesLog.getUserID()));
-                userNameList.add(userName);
+        if (userQueriesLogList.isEmpty()) {
+            printWriter.println("Brak zapytań o użytkownika");
+            return;
+        }
+        TreeSet<Integer> userIdList = new TreeSet<>();
+        for (UserQueriesLog userQueriesLog : userQueriesLogList) {
+            int userId = userQueriesLog.getUserID();
+            if (!userIdList.contains(userId)) {
+                printWriter.println("Id: " + userQueriesLog.getUserID() + " -- " + userQueriesLog.getUserName() + " -- ilość zapytań: " + searchStatisticsBean.getNumberOfQueriesById(userQueriesLog.getUserID()) + "<br />");
+                userIdList.add(userId);
             }
         }
+
     }
 }

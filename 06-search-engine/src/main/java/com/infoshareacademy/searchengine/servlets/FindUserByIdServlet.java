@@ -25,18 +25,19 @@ public class FindUserByIdServlet extends HttpServlet {
     private SearchStatistics searchStatisticsBean;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        if(req.getParameter("id")==null){
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter("id") == null) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
         User user = userRepositoryDaoBean.getUserById(Integer.valueOf(req.getParameter("id")));
-            if(user==null){
-                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                return ;
-            }
-                PrintWriter writer = resp.getWriter();
+        if (user == null) {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter writer = resp.getWriter();
 
         UserQueriesLog userQueriesLog = new UserQueriesLog();
         userQueriesLog.setUserID(user.getId());
@@ -45,6 +46,6 @@ public class FindUserByIdServlet extends HttpServlet {
         searchStatisticsBean.addUserQuery(userQueriesLog);
         int numberOfQueries = searchStatisticsBean.getNumberOfQueriesById(user.getId());
 
-        writer.println("Ilość zapytań o użytkownika "+user.getName()+": "+numberOfQueries);
+        writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries);
     }
 }
