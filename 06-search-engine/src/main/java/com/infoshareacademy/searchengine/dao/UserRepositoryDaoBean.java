@@ -3,7 +3,6 @@ package com.infoshareacademy.searchengine.dao;
 import com.infoshareacademy.searchengine.domain.User;
 import com.infoshareacademy.searchengine.repository.UsersRepository;
 
-import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import java.util.List;
 
