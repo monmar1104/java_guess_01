@@ -8,5 +8,7 @@
 <h2>Witaj</h2>
 <%@ include file="menu.jsp"%>
 <%@ include file="add-user.jsp"%>
+<%@ include file="welcome-user.jsp"%>
+
 </body>
 </html>
