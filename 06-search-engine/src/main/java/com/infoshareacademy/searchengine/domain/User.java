@@ -1,7 +1,14 @@
 package com.infoshareacademy.searchengine.domain;
 
 public class User {
+
     private int id;
+    private String name;
+    private String surname;
+    private String login;
+    private int age;
+    private Gender gender;
+
 
     public int getId() {
         return id;
@@ -43,10 +50,14 @@ public class User {
         this.age = age;
     }
 
-    private String name;
-    private String surname;
-    private String login;
-    private int age;
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 
 
 }

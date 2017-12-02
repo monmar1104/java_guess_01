@@ -1,7 +1,9 @@
 package com.infoshareacademy.searchengine.servlets;
 
+import com.infoshareacademy.searchengine.cdi.MaxPulse;
 import com.infoshareacademy.searchengine.dao.SearchStatistics;
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
+import com.infoshareacademy.searchengine.domain.Gender;
 import com.infoshareacademy.searchengine.domain.User;
 import com.infoshareacademy.searchengine.domain.UserQueriesLog;
 
@@ -24,6 +26,9 @@ public class FindUserByIdServlet extends HttpServlet {
     @Inject
     private SearchStatistics searchStatisticsBean;
 
+    @Inject
+    private MaxPulse maxPulse;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("id") == null) {
@@ -38,6 +43,7 @@ public class FindUserByIdServlet extends HttpServlet {
         }
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
+        double pulse = 0;
 
         UserQueriesLog userQueriesLog = new UserQueriesLog();
         userQueriesLog.setUserID(user.getId());
@@ -45,7 +51,10 @@ public class FindUserByIdServlet extends HttpServlet {
         userQueriesLog.setLogDate(LocalDateTime.now());
         searchStatisticsBean.addUserQuery(userQueriesLog);
         int numberOfQueries = searchStatisticsBean.getNumberOfQueriesById(user.getId());
-
-        writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries);
+        if(user.getGender().equals(Gender.MAN)){
+            pulse = maxPulse.getMaxPulseForMan(user.getAge());
+        }
+        else pulse = maxPulse.getMaxPulseForWoman(user.getAge());
+        writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries+"-- puls: "+pulse);
     }
 }

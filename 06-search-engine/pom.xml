@@ -45,6 +45,19 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <ejbVersion>3.2</ejbVersion>
+          <generateClient>true</generateClient>
+          <clientIncludes>
+            <clientInclude>com/infoshareacademy/searchengine/dao/UsersRepositoryDaoRemote.class
+            </clientInclude>
+          </clientIncludes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
