@@ -1,6 +1,7 @@
 package com.infoshareacademy.searchengine.servlets;
 
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
+import com.infoshareacademy.searchengine.domain.Gender;
 import com.infoshareacademy.searchengine.domain.User;
 
 import javax.inject.Inject;
@@ -18,14 +19,26 @@ public class AddUserServlet extends HttpServlet {
     @Inject
     private UsersRepositoryDao userRepositoryDaoBean;
 
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        addUser(request, response);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        addUser(request, response);
+    }
+
+    private void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = new User();
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String login = request.getParameter("login");
         String age = request.getParameter("age");
+        //TODO
+        //Gender gender = request.getParameter("gender");
 
         if (id == null || name == null || surname == null || login == null || age == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -44,6 +57,7 @@ public class AddUserServlet extends HttpServlet {
         user.setSurname(surname);
         user.setLogin(login);
         user.setAge(Integer.valueOf(age));
+        //user.setGender(gender);
         userRepositoryDaoBean.addUser(user);
 
 

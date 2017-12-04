@@ -22,11 +22,10 @@
       <artifactId>javaee-api</artifactId>
       <version>8.0</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>23.5-jre</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
   </dependencies>
   <build>
@@ -50,6 +49,19 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <ejbVersion>3.2</ejbVersion>
+          <generateClient>true</generateClient>
+          <clientIncludes>
+            <clientInclude>com/infoshareacademy/searchengine/dao/UsersRepositoryDaoRemote.class
+            </clientInclude>
+          </clientIncludes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
