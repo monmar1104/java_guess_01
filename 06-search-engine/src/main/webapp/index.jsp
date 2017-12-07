@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: marcinpastwa
-  Date: 03.12.2017
-  Time: 14:43
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Pierwsza strona JSP</title>
 </head>
 <body>
-$END$
+<h2>Witaj</h2>
+<%@ include file="menu.jsp"%>
+<%@ include file="add-user.jsp"%>
+<%@ include file="welcome-user.jsp"%>
+
 </body>
 </html>
