@@ -29,6 +29,7 @@ public class WelcomeUserServlet extends HttpServlet {
         req.setAttribute("name", req.getParameter("name"));
         req.getSession().setAttribute("sessionName", req.getParameter("name"));
 
+        //Ustawienie atrubutu jest realizowane w SalaryIncrementFilter
         //req.setAttribute("salary", req.getParameter("salary"));
         req.getSession().setAttribute("sessionSallary", req.getParameter("salary"));
 

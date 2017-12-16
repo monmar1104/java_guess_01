@@ -7,6 +7,6 @@
 
 
     <c:set var="bonus" scope="request" value="${salary*1.2}"/>
-    <c:out value="${bonus}" default="0,00" />
+    Bonus: <c:out value="${bonus}" default="0,00" />
     <h2> Witaj ${sessionScope.sessionName}, salary ${sessionScope.sessionSallary} </h2>
 </div>

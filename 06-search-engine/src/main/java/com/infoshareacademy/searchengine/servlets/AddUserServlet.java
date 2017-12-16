@@ -3,8 +3,10 @@ package com.infoshareacademy.searchengine.servlets;
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
 import com.infoshareacademy.searchengine.domain.Gender;
 import com.infoshareacademy.searchengine.domain.User;
+import com.infoshareacademy.searchengine.interceptors.AddUserInterceptor;
 
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +40,12 @@ public class AddUserServlet extends HttpServlet {
         String surname = request.getParameter("surname");
         String login = request.getParameter("login");
         String age = request.getParameter("age");
-        //TODO
-        Gender gender;
+
+        Gender gender=null;
         if (request.getParameter("gender")=="MAN"){
             gender = Gender.MAN;
-        } else
-        {
+        }
+        else if (request.getParameter("gender")=="WOMAN") {
             gender=Gender.WOMAN;
         }
 
