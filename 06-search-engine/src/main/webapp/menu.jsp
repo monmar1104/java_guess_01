@@ -7,5 +7,6 @@
         <li><a href="print-users" >users list</a></li>
         <li><a href="print-user-queries" >statistics</a></li>
         <li><a href="statistics" >statistics-map</a></li>
+        <li><a href="welcome-user" >Welcomeuser</a></li>
     </ul>
 </div>
