@@ -1,13 +1,25 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Add user</title>
+</head>
+<body>
 <div>
-    <form action="add-user" method="post">
-        <input type="text" name="id"/>
-        <input type="text" name="name"/>
-        <input type="text" name="surname"/>
-        <input type="text" name="login"/>
-        <input type="text" name="age"/>
-        <input type="text" name="gender"/>
-        <button type="submit">Dodaj</button>
+    <form method="post" action="add-user">
+        <label>ID:</label><input name="id" type="text"/><br /><br />
+        <label>Name:</label><input name="name" type="text"/><br /><br />
+        <label>Surname:</label><input name="surname" type="text"/><br /><br />
+        <label>Login:</label><input name="login" type="text"/><br /><br />
+        <label>Age:</label><input name="age" type="text"/><br /><br />
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="">&lt;select&gt;</option>
+            <option value="MAN">MAN</option>
+            <option value="WOMAN">WOMAN</option>
+        </select>
+        <input type="submit" name="add-user" value="add-user"/>
     </form>
 </div>
+</body>
+</html>

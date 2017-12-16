@@ -23,6 +23,7 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         addUser(request, response);
+
     }
 
     @Override
@@ -38,7 +39,13 @@ public class AddUserServlet extends HttpServlet {
         String login = request.getParameter("login");
         String age = request.getParameter("age");
         //TODO
-        //Gender gender = request.getParameter("gender");
+        Gender gender;
+        if (request.getParameter("gender")=="MAN"){
+            gender = Gender.MAN;
+        } else
+        {
+            gender=Gender.WOMAN;
+        }
 
         if (id == null || name == null || surname == null || login == null || age == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -57,7 +64,7 @@ public class AddUserServlet extends HttpServlet {
         user.setSurname(surname);
         user.setLogin(login);
         user.setAge(Integer.valueOf(age));
-        //user.setGender(gender);
+        user.setGender(gender);
         userRepositoryDaoBean.addUser(user);
 
 
