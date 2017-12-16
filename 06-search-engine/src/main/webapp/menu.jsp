@@ -6,5 +6,6 @@
         <li><a href="add-user.jsp" >add user</a></li>
         <li><a href="print-users" >users list</a></li>
         <li><a href="print-user-queries" >statistics</a></li>
+        <li><a href="statistics" >statistics-map</a></li>
     </ul>
 </div>

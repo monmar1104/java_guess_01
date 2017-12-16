@@ -33,7 +33,7 @@ public class StatisticsServlet extends HttpServlet {
 
         req.setAttribute("list", statistics);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/users-list.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/users-list-map.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

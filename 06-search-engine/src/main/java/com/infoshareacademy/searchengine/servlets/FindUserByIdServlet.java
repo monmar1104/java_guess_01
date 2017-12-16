@@ -56,5 +56,6 @@ public class FindUserByIdServlet extends HttpServlet {
         }
         else pulse = maxPulse.getMaxPulseForWoman(user.getAge());
         writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries+"-- puls: "+pulse);
+        searchStatisticsBean.addVisit(user);
     }
 }

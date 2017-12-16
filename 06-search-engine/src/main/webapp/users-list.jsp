@@ -6,7 +6,15 @@
 </head>
 <body>
 <c:forEach var="list" items="${userslist}">
-<div>
+    <c:choose>
+        <c:when test="${list.gender.toString()=='MAN'}">
+            <c:set var="gender" value="color: blue"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="gender" value="color: red"/>
+        </c:otherwise>
+    </c:choose>
+    <div style="${gender}">
     Id <c:out value="${list.id}"/><br/>
     Name <c:out value="${list.name}"/><br/>
     Surname <c:out value="${list.surname}"/><br/>
