@@ -13,6 +13,7 @@
     Login <c:out value="${list.login}"/><br/>
     Age <c:out value="${list.age}"/><br/>
     Gender <c:out value="${list.gender}"/><br/>
+    <br/>
 </div>
 </c:forEach>
 
