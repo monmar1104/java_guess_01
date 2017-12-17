@@ -15,7 +15,7 @@ import java.util.List;
 @Stateless
 public class UserRepositoryDaoBean implements UsersRepositoryDao, UsersRepositoryDaoRemote {
 
-    //@PersistenceContext(unitName = "pUnit")
+    @PersistenceContext(unitName = "pUnit")
     private EntityManager entityManager;
 
     @Override
