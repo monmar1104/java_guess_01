@@ -1,7 +1,8 @@
 **Zadanie 1.** do 30.12.2017 (3pkt)
 
 - Dodawanie użytkownika w 3 krokach. 
-- Zgodnie z zadaniem z prezentacji (dokończyć to co zaczęliśmy na zajęciach - Zadanie 13)
+- Zgodnie z [zadaniem z prezentacji](https://github.com/infoshareacademy/jjdz4-materialy/blob/master/slides/2017-12-02_JEE-Advanced.pdf) 
+    - dokończyć to co zaczęliśmy na zajęciach - Zadanie 13
     
 **Zadanie 2.** do 06.01.2018 (7pkt)
 
@@ -21,7 +22,7 @@ Wskazówki:
 
 **Zadanie 4.** do 13.01.2018 (5pkt)
 
-- Przejrzeć wykład z Hibernate do końca
+- Przejrzeć [wykład z Hibernate](https://github.com/infoshareacademy/jjdz4-materialy/blob/master/slides/2017-12-17_hibernate.pdf) do końca
 - Przerobić ćwiczenie 2.2 (Strona 97 z wykładu)
     - Migracja StatisticsRepository and UsersRepository do Hibernate
 - Przerobić ćwiczenie 2.3 (Strona 105) 
