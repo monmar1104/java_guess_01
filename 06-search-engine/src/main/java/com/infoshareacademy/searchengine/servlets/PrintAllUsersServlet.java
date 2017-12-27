@@ -20,7 +20,7 @@ public class PrintAllUsersServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<User> userList = userRepositoryDaoBean.getUserList();
+        List<User> userList = userRepositoryDaoBean.getUsersList();
         request.setAttribute("userslist", userList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/users-list.jsp");
         requestDispatcher.forward(request,response);

@@ -5,6 +5,7 @@ import com.infoshareacademy.searchengine.domain.UserQueriesLog;
 import com.infoshareacademy.searchengine.repository.StatisticsRepository;
 import com.infoshareacademy.searchengine.repository.UserQueriesRepository;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,9 @@ import java.util.stream.Collectors;
 
 @Stateless
 public class SearchStatisticsBean implements SearchStatistics {
+
+    @EJB
+    StatisticsRepository statisticsRepository;
 
 
     @Override
@@ -39,19 +43,19 @@ public class SearchStatisticsBean implements SearchStatistics {
     }
     @Override
     public void addVisit(User user) {
-        StatisticsRepository.getRepository().putIfAbsent(user, 0);
+        statisticsRepository.getRepository().putIfAbsent(user, 0);
         Integer userStats = getStatisticsByUser(user);
-        StatisticsRepository.getRepository().replace(user, userStats + 1);
+        statisticsRepository.getRepository().replace(user, userStats + 1);
     }
 
     @Override
     public Map<User, Integer> getAllStatistics() {
-        return StatisticsRepository.getRepository();
+        return statisticsRepository.getRepository();
     }
 
     @Override
     public Integer getStatisticsByUser(User user) {
-        return StatisticsRepository.getRepository().get(user);
+        return statisticsRepository.getRepository().get(user);
     }
 
 }

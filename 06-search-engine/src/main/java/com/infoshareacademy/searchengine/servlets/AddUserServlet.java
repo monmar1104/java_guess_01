@@ -54,7 +54,7 @@ public class AddUserServlet extends HttpServlet {
             return;
         }
 
-        List<User> userList = userRepositoryDaoBean.getUserList();
+        List<User> userList = userRepositoryDaoBean.getUsersList();
 
         if (isIdExist(userList, id)) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);

@@ -1,47 +1,34 @@
 package com.infoshareacademy.searchengine.repository;
 
-import com.infoshareacademy.searchengine.domain.Gender;
 import com.infoshareacademy.searchengine.domain.User;
 
-import java.util.ArrayList;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Stateless
 public class UsersRepository {
-    private static List<User> usersRepository = new ArrayList<>();
+    @PersistenceContext(unitName = "pUnit")
+    EntityManager entityManager;
 
-    public static List<User> getRepository() {
-        if (usersRepository.size() == 0) {
-            fillRepositoryWithDefaults();
-        }
-        return usersRepository;
+    public boolean addUser(User user){
+        entityManager.persist(user);
+        return true;
     }
 
-    private static void fillRepositoryWithDefaults() {
-        User user1 = new User();
-        user1.setId(1);
-        user1.setName("Jan");
-        user1.setSurname("Kowalski");
-        user1.setLogin("janko");
-        user1.setAge(21);
-        user1.setGender(Gender.MAN);
-        usersRepository.add(user1);
+    public User getUserById(int id){
+        return entityManager.find(User.class, id);
+    }
 
-        User user2 = new User();
-        user2.setId(2);
-        user2.setName("Adam");
-        user2.setSurname("Nowak");
-        user2.setLogin("ano");
-        user2.setAge(20);
-        user2.setGender(Gender.MAN);
-        usersRepository.add(user2);
+    public User getUserByLogin(String login){
+        return (User) entityManager.createNamedQuery("selectUserByLogin")
+                .setParameter("login",login)
+                .getSingleResult();
+    }
 
-        User user3 = new User();
-        user3.setId(3);
-        user3.setName("Anna");
-        user3.setSurname("Michalczuk");
-        user3.setLogin("anmi");
-        user3.setAge(20);
-        user3.setGender(Gender.WOMAN);
-        usersRepository.add(user3);
+    public List<User> getUsersList(){
+        return entityManager.createNamedQuery("selectAll")
+                .getResultList();
     }
 }

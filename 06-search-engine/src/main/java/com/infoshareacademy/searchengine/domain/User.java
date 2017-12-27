@@ -1,35 +1,24 @@
 package com.infoshareacademy.searchengine.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "selectUserByLogin", query = "from User where login=:login"),
+        @NamedQuery(name = "selectAll", query = "from User ")
+})
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true)
     private int id;
+    @Column
     private String name;
     private String surname;
     private String login;
     private int age;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
-    List<Group> groups = new ArrayList<>();
-
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -63,6 +52,13 @@ public class User {
         this.age = age;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Gender getGender() {
         return gender;
@@ -72,5 +68,15 @@ public class User {
         this.gender = gender;
     }
 
+    public int hashCode(){
+        return this.id;
+    }
 
+    public boolean equals(Object o){
+        if(o instanceof User){
+            User other = (User) o;
+            return this.id == other.id;
+        }
+        return false;
+    }
 }
