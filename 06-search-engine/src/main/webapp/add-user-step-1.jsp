@@ -12,6 +12,9 @@
 
         <input type="submit" name="add-user" value="next"/>
     </form>
+    <c:if test="${errorLoginMessage != null}">
+        <div style="color: red;">${errorLoginMessage}</div>
+    </c:if>
 </div>
 </body>
 </html>
