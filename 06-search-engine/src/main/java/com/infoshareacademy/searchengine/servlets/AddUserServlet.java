@@ -35,43 +35,49 @@ public class AddUserServlet extends HttpServlet {
 
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = new User();
-        String id = request.getParameter("id");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String login = request.getParameter("login");
         String age = request.getParameter("age");
 
-        Gender gender=null;
-        if (request.getParameter("gender")=="MAN"){
-            gender = Gender.MAN;
-        }
-        else if (request.getParameter("gender")=="WOMAN") {
-            gender=Gender.WOMAN;
-        }
+        //Gender gender=null;
 
-        if (id == null || name == null || surname == null || login == null || age == null) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
+//        if (id == null || name == null || surname == null || login == null || age == null) {
+//            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            return;
+//        }
 
-        List<User> userList = userRepositoryDaoBean.getUsersList();
 
-        if (isIdExist(userList, id)) {
-            response.setStatus(HttpServletResponse.SC_CONFLICT);
-            return;
-        }
+//        if (isIdExist(userList, id)) {
+//            response.setStatus(HttpServletResponse.SC_CONFLICT);
+//            return;
+//        }
 
-        user.setId(Integer.valueOf(id));
+//        user.setId(Integer.valueOf(id));
         user.setName(name);
         user.setSurname(surname);
         user.setLogin(login);
         user.setAge(Integer.valueOf(age));
-        user.setGender(gender);
+        setGender(request, user);
         userRepositoryDaoBean.addUser(user);
 
 
+        List<User> userList = userRepositoryDaoBean.getUsersList();
+
         PrintWriter writer = response.getWriter();
+        response.setContentType("text/html;charset=UTF-8");
         printNames(userList, writer);
+    }
+
+     void setGender(HttpServletRequest request, User user) {
+        String gender = request.getParameter("gender");
+        if (gender.equals("MAN")){
+            user.setGender(Gender.MAN);
+        }
+        else if (gender.equals("WOMAN")){
+            user.setGender(Gender.WOMAN);
+        }
+        else user.setGender(null);
     }
 
     private boolean isIdExist(List<User> userList, String id) {

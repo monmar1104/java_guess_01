@@ -15,11 +15,10 @@ import java.io.IOException;
 
 
 @WebServlet("add-user-steps")
-public class AddUserStepsServlet extends HttpServlet {
+public class AddUserStepsServlet extends AddUserServlet {
 
     @Inject
     private UsersRepositoryDao userRepositoryDaoBean;
-
 
 
     @Override
@@ -31,40 +30,34 @@ public class AddUserStepsServlet extends HttpServlet {
     }
 
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        if(request.getParameter("step").equals("1")){
-            request.getSession().setAttribute("id", request.getParameter("id"));
-            request.getSession().setAttribute("login", request.getParameter("login"));
+        User user;
+        if (request.getSession().getAttribute("user") == null) {
+            user = new User();
+            request.getSession().setAttribute("user", user);
+        }
+        user = (User) request.getSession().getAttribute("user");
+        if (request.getParameter("step").equals("1")) {
+            user.setLogin(request.getParameter("login"));
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("add-user-step-2.jsp");
             requestDispatcher.forward(request, response);
-            return;
-        } else if(request.getParameter("step").equals("2")){
-            request.getSession().setAttribute("name", request.getParameter("name"));
-            request.getSession().setAttribute("surname", request.getParameter("surname"));
-            request.getSession().setAttribute("age", request.getParameter("age"));
+        } else if (request.getParameter("step").equals("2")) {
+            user.setName(request.getParameter("name"));
+            user.setSurname(request.getParameter("surname"));
+            user.setAge(Integer.parseInt(request.getParameter("age")));
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("add-user-step-3.jsp");
             requestDispatcher.forward(request, response);
-            return;
-
-        } else if (request.getParameter("step").equals("3")){
-            request.getSession().setAttribute("gender", request.getParameter("gender"));
-
-            User user = new User();
-            user.setId(Integer.parseInt((String)request.getSession().getAttribute("id")));
-            user.setLogin((String) request.getSession().getAttribute("login"));
-            user.setName((String) request.getSession().getAttribute("name"));
-            user.setSurname((String) request.getSession().getAttribute("surname"));
-            user.setAge(Integer.parseInt((String)request.getSession().getAttribute("age")));
-            Gender gender=null;
-            if (request.getSession().getAttribute("gender")=="MAN"){
-                gender = Gender.MAN;
-            }
-            else if (request.getSession().getAttribute("gender")=="WOMAN") {
-                gender=Gender.WOMAN;
-            }
-
-            user.setGender(gender);
+        } else if (request.getParameter("step").equals("3")) {
+            setGender(request, user);
             userRepositoryDaoBean.addUser(user);
+            request.setAttribute("okMessage", "User with ID " + user.getId() + " has been added.");
+            request.setAttribute("userId",user.getId());
+            request.setAttribute("name",user.getName());
+            request.setAttribute("surname",user.getSurname());
+            request.setAttribute("age",user.getAge());
+            request.setAttribute("login",user.getLogin());
+            request.setAttribute("gender",user.getGender());
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("user-details.jsp");
+            requestDispatcher.forward(request, response);
             request.getSession().invalidate();
         }
 

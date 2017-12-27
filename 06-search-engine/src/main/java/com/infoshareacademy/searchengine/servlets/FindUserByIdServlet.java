@@ -2,12 +2,15 @@ package com.infoshareacademy.searchengine.servlets;
 
 import com.infoshareacademy.searchengine.cdi.MaxPulse;
 import com.infoshareacademy.searchengine.dao.SearchStatistics;
+import com.infoshareacademy.searchengine.dao.StatisticsRepositoryDao;
 import com.infoshareacademy.searchengine.dao.UsersRepositoryDao;
 import com.infoshareacademy.searchengine.domain.Gender;
 import com.infoshareacademy.searchengine.domain.User;
 import com.infoshareacademy.searchengine.domain.UserQueriesLog;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +24,13 @@ import java.time.LocalDateTime;
 @WebServlet("find-user-by-id")
 public class FindUserByIdServlet extends HttpServlet {
     @Inject
-    private UsersRepositoryDao userRepositoryDaoBean;
+    private UsersRepositoryDao usersRepositoryDao;
 
     @Inject
     private SearchStatistics searchStatisticsBean;
+
+    @EJB
+    StatisticsRepositoryDao statisticsRepositoryDao;
 
     @Inject
     private MaxPulse maxPulse;
@@ -36,7 +42,7 @@ public class FindUserByIdServlet extends HttpServlet {
             return;
         }
 
-        User user = userRepositoryDaoBean.getUserById(Integer.valueOf(req.getParameter("id")));
+        User user = usersRepositoryDao.getUserById(Integer.valueOf(req.getParameter("id")));
         if (user == null) {
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
@@ -57,5 +63,25 @@ public class FindUserByIdServlet extends HttpServlet {
         else pulse = maxPulse.getMaxPulseForWoman(user.getAge());
         writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries+"-- puls: "+pulse);
         searchStatisticsBean.addVisit(user);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        Integer id = Integer.parseInt(request.getParameter("uid"));
+        User user = usersRepositoryDao.getUserById(id);
+        statisticsRepositoryDao.addVisit(user);
+        request.getSession().setAttribute("userId",user.getId());
+        request.getSession().setAttribute("name",user.getName());
+        request.getSession().setAttribute("surname",user.getSurname());
+        request.getSession().setAttribute("login",user.getLogin());
+        request.getSession().setAttribute("age",user.getAge());
+        request.getSession().setAttribute("gender",user.getGender());
+        request.getSession().setAttribute("stats",statisticsRepositoryDao.getStatisticsByUser(user));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("find-user.jsp");
+        requestDispatcher.forward(request, response);
+
+//        requestDispatcher = request.getRequestDispatcher("user-details.jsp");
+//
+//        requestDispatcher.forward(request,response);
+
     }
 }
