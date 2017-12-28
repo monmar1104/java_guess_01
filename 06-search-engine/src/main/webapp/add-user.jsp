@@ -7,7 +7,6 @@
 <body>
 <div>
     <form method="post" action="add-user">
-        <label>ID:</label><input name="id" type="text"/><br /><br />
         <label>Name:</label><input name="name" type="text"/><br /><br />
         <label>Surname:</label><input name="surname" type="text"/><br /><br />
         <label>Login:</label><input name="login" type="text"/><br /><br />
