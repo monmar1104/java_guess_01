@@ -24,12 +24,15 @@ public class AddUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         addUser(request, response);
 
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("8859_2");
+        response.setContentType("text/html;charset=UTF-8");
         addUser(request, response);
     }
 
@@ -40,20 +43,6 @@ public class AddUserServlet extends HttpServlet {
         String login = request.getParameter("login");
         String age = request.getParameter("age");
 
-        //Gender gender=null;
-
-//        if (id == null || name == null || surname == null || login == null || age == null) {
-//            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            return;
-//        }
-
-
-//        if (isIdExist(userList, id)) {
-//            response.setStatus(HttpServletResponse.SC_CONFLICT);
-//            return;
-//        }
-
-//        user.setId(Integer.valueOf(id));
         user.setName(name);
         user.setSurname(surname);
         user.setLogin(login);
@@ -61,23 +50,22 @@ public class AddUserServlet extends HttpServlet {
         setGender(request, user);
         userRepositoryDaoBean.addUser(user);
 
-
         List<User> userList = userRepositoryDaoBean.getUsersList();
 
         PrintWriter writer = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
+        writer.println("Dodano użytkownika: "+name);
+        writer.println();
+        writer.println("Lista użytkowników w bazie:");
         printNames(userList, writer);
     }
 
-     void setGender(HttpServletRequest request, User user) {
+    void setGender(HttpServletRequest request, User user) {
         String gender = request.getParameter("gender");
-        if (gender.equals("MAN")){
+        if (gender.equals("MAN")) {
             user.setGender(Gender.MAN);
-        }
-        else if (gender.equals("WOMAN")){
+        } else if (gender.equals("WOMAN")) {
             user.setGender(Gender.WOMAN);
-        }
-        else user.setGender(null);
+        } else user.setGender(null);
     }
 
     private boolean isIdExist(List<User> userList, String id) {

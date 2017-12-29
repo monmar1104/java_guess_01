@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page pageEncoding="ISO-8859-1" %>
+
 <html>
 <head>
     <title>User details</title>
@@ -21,9 +23,9 @@
       Login: <c:out value="${login}"/><br/>
       Age: <c:out value="${age}"/><br/>
       Gender: <c:out value="${gender}"/><br/>
-    <c:if test="${stats}!=null">
+    <%--<c:if test="${stats}!=null">--%>
       Stats: <c:out value="${stats}"/><br/>
-    </c:if>
+    <%--</c:if>--%>
   </div>
 <%@ include file="go-back.jsp" %>
 </body>

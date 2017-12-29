@@ -1,5 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page pageEncoding="ISO-8859-1" %>
+
 <html>
 <head>
     <title>Add user</title>

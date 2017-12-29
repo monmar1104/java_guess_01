@@ -64,24 +64,20 @@ public class FindUserByIdServlet extends HttpServlet {
         writer.println("Ilość zapytań o użytkownika " + user.getName() + ": " + numberOfQueries+"-- puls: "+pulse);
         searchStatisticsBean.addVisit(user);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         Integer id = Integer.parseInt(request.getParameter("uid"));
         User user = usersRepositoryDao.getUserById(id);
         statisticsRepositoryDao.addVisit(user);
-        request.getSession().setAttribute("userId",user.getId());
-        request.getSession().setAttribute("name",user.getName());
-        request.getSession().setAttribute("surname",user.getSurname());
-        request.getSession().setAttribute("login",user.getLogin());
-        request.getSession().setAttribute("age",user.getAge());
-        request.getSession().setAttribute("gender",user.getGender());
-        request.getSession().setAttribute("stats",statisticsRepositoryDao.getStatisticsByUser(user));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("find-user.jsp");
+        request.setAttribute("userId",user.getId());
+        request.setAttribute("name",user.getName());
+        request.setAttribute("surname",user.getSurname());
+        request.setAttribute("login",user.getLogin());
+        request.setAttribute("age",user.getAge());
+        request.setAttribute("gender",user.getGender());
+        request.setAttribute("stats",statisticsRepositoryDao.getStatisticsByUser(user));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user-details.jsp");
         requestDispatcher.forward(request, response);
-
-//        requestDispatcher = request.getRequestDispatcher("user-details.jsp");
-//
-//        requestDispatcher.forward(request,response);
-
     }
 }
