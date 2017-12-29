@@ -15,4 +15,14 @@
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>
     </persistence-unit>
+    <!--<persistence-unit name="pUnitAuth">-->
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        <!--<jta-data-source>java:/ISAJeeAuth</jta-data-source>-->
+        <!--<properties>-->
+            <!--<property name="hibernate.archive.autodetection" value="class"/>-->
+            <!--<property name="hibernate.show_sql" value="true"/>-->
+            <!--<property name="hibernate.format_sql" value="true"/>-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="validate"/>-->
+        <!--</properties>-->
+    <!--</persistence-unit>-->
 </persistence>

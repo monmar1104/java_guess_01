@@ -7,17 +7,18 @@ import org.wildfly.security.authz.Roles;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+//TODO dodawanie użytkowników do tabel users i roles
+//TODO rozwiązać problem dwóch persistence unit
 @Stateless
 public class AuthorizedUsersDaoBean implements AuthorizedUsersDao {
 
-    @PersistenceContext(unitName = "pUnit")
-    EntityManager entityManager;
+//    @PersistenceContext(unitName = "pUnitAuth")
+//    EntityManager entityManager;
 
     @Override
     public void addAuthorizedUser(Users users, Roles roles){
-        entityManager.persist(users);
-        entityManager.persist(roles);
+//        entityManager.persist(users);
+//        entityManager.persist(roles);
     }
 
     @Override
