@@ -45,4 +45,8 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao, UsersReposito
         }
         return usersNames;
     }
+    @Override
+    public void updateUser(User user){
+        usersRepository.updateUser(user);
+    }
 }

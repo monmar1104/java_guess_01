@@ -2,7 +2,7 @@ package com.infoshareacademy.searchengine.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+//
 //@Entity
 //@Table(name = "users")
 public class Users implements Serializable{

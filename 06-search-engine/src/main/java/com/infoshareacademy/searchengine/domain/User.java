@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "selectUserByLogin", query = "from User where login=:login"),
-        @NamedQuery(name = "selectAll", query = "from User ")
+        @NamedQuery(name = "selectAll", query = "from User "),
+        @NamedQuery(name = "updateUser", query = "update User u set u.name=:name, u.surname=:surname,u.age=:age,u.login=:login, u.gender=:gender where u.id=:id")
 })
 public class User {
     @Id

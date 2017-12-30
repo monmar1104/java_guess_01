@@ -8,7 +8,7 @@
 <div>
     <form method="post" action="add-user-steps">
         <input type="hidden" name="step" value="1"/>
-        <label>Login:</label><input name="login" type="text"/><br /><br />
+        <label>Login:</label><input name="login" type="text" value="${sessionScope.login}"/><br /><br />
 
         <input type="submit" name="add-user" value="next"/>
     </form>

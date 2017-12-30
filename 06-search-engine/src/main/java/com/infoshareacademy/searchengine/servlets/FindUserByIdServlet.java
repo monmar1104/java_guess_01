@@ -70,12 +70,12 @@ public class FindUserByIdServlet extends HttpServlet {
         Integer id = Integer.parseInt(request.getParameter("uid"));
         User user = usersRepositoryDao.getUserById(id);
         statisticsRepositoryDao.addVisit(user);
-        request.setAttribute("userId",user.getId());
-        request.setAttribute("name",user.getName());
-        request.setAttribute("surname",user.getSurname());
-        request.setAttribute("login",user.getLogin());
-        request.setAttribute("age",user.getAge());
-        request.setAttribute("gender",user.getGender());
+        request.getSession().setAttribute("userId",user.getId());
+        request.getSession().setAttribute("name",user.getName());
+        request.getSession().setAttribute("surname",user.getSurname());
+        request.getSession().setAttribute("login",user.getLogin());
+        request.getSession().setAttribute("age",user.getAge());
+        request.getSession().setAttribute("gender",user.getGender());
         request.setAttribute("stats",statisticsRepositoryDao.getStatisticsByUser(user));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("user-details.jsp");
         requestDispatcher.forward(request, response);

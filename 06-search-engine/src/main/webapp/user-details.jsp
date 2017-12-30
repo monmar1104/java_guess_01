@@ -23,10 +23,14 @@
       Login: <c:out value="${login}"/><br/>
       Age: <c:out value="${age}"/><br/>
       Gender: <c:out value="${gender}"/><br/>
-    <%--<c:if test="${stats}!=null">--%>
+    <c:if test="${stats}!=null">
       Stats: <c:out value="${stats}"/><br/>
-    <%--</c:if>--%>
+    </c:if>
   </div>
+  <br/><br/>
+  <form method="post" action="update-user">
+      <input type="submit" name="update-user" value="update-user">
+  </form>
 <%@ include file="go-back.jsp" %>
 </body>
 </html>

@@ -35,6 +35,8 @@ public class AddUserStepsServlet extends AddUserServlet {
         }
         user = (User) request.getSession().getAttribute("user");
         if (request.getParameter("step").equals("1")) {
+            Integer id =(Integer) request.getSession().getAttribute("userId");
+            user.setId(id);
             user.setLogin(request.getParameter("login"));
             if (user.getLogin().equals("")) {
                 request.setAttribute("errorLoginMessage", "Enter login");
@@ -69,7 +71,12 @@ public class AddUserStepsServlet extends AddUserServlet {
             requestDispatcher.forward(request, response);
         } else if (request.getParameter("step").equals("3")) {
             setGender(request, user);
-            userRepositoryDaoBean.addUser(user);
+            if(user.getId()>0){
+                userRepositoryDaoBean.updateUser(user);
+            }
+            else{
+                userRepositoryDaoBean.addUser(user);
+            }
             request.setAttribute("okMessage", "User with ID " + user.getId() + " has been added.");
             request.setAttribute("userId", user.getId());
             request.setAttribute("name", user.getName());
