@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -29,13 +30,14 @@ public class AddUserStepsServlet extends AddUserServlet {
 
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user;
-        if (request.getSession().getAttribute("user") == null) {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("user") == null) {
             user = new User();
-            request.getSession().setAttribute("user", user);
+            session.setAttribute("user", user);
         }
-        user = (User) request.getSession().getAttribute("user");
+        user = (User) session.getAttribute("user");
         if (request.getParameter("step").equals("1")) {
-            Integer id =(Integer) request.getSession().getAttribute("userId");
+            Integer id = getUserId(request);
             user.setId(id);
             user.setLogin(request.getParameter("login"));
             if (user.getLogin().equals("")) {
@@ -71,23 +73,28 @@ public class AddUserStepsServlet extends AddUserServlet {
             requestDispatcher.forward(request, response);
         } else if (request.getParameter("step").equals("3")) {
             setGender(request, user);
-            if(user.getId()>0){
+            if (user.getId() > 0) {
                 userRepositoryDaoBean.updateUser(user);
-            }
-            else{
+            } else {
                 userRepositoryDaoBean.addUser(user);
             }
-            request.setAttribute("okMessage", "User with ID " + user.getId() + " has been added.");
-            request.setAttribute("userId", user.getId());
-            request.setAttribute("name", user.getName());
-            request.setAttribute("surname", user.getSurname());
-            request.setAttribute("age", user.getAge());
-            request.setAttribute("login", user.getLogin());
-            request.setAttribute("gender", user.getGender());
+
+            session.setAttribute("okMessage", "User with ID " + user.getId() + " has been added.");
+            session.setAttribute("userId", user.getId());
+            session.setAttribute("name", user.getName());
+            session.setAttribute("surname", user.getSurname());
+            session.setAttribute("age", user.getAge());
+            session.setAttribute("login", user.getLogin());
+            session.setAttribute("gender", user.getGender());
+            session.setAttribute("infoUserStatus","edit");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("user-details.jsp");
             requestDispatcher.forward(request, response);
-            request.getSession().invalidate();
+            session.invalidate();
         }
+    }
+
+    private Integer getUserId(HttpServletRequest request) {
+        return (Integer) request.getSession().getAttribute("userId") == null ? 0 : (Integer) request.getSession().getAttribute("userId");
     }
 
     public static boolean isInteger(String number) {

@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet("update-user")
 public class UpdateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        //request.getSession().setAttribute("infoUserStatus","update");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("add-user-step-1.jsp");
         requestDispatcher.forward(request,response);
     }

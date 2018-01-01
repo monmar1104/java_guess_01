@@ -17,20 +17,22 @@
 </c:if>
 <br/><br/>
 <div>
-      ID: <c:out value="${userId}"/><br/>
-      Name: <c:out value="${name}"/><br/>
-      Surname: <c:out value="${surname}"/><br/>
-      Login: <c:out value="${login}"/><br/>
-      Age: <c:out value="${age}"/><br/>
-      Gender: <c:out value="${gender}"/><br/>
-    <c:if test="${stats}!=null">
+      ID: <c:out value="${sessionScope.userId}"/><br/>
+      Name: <c:out value="${sessionScope.name}"/><br/>
+      Surname: <c:out value="${sessionScope.surname}"/><br/>
+      Login: <c:out value="${sessionScope.login}"/><br/>
+      Age: <c:out value="${sessionScope.age}"/><br/>
+      Gender: <c:out value="${sessionScope.gender}"/><br/>
+    <c:if test="${stats!=null}">
       Stats: <c:out value="${stats}"/><br/>
     </c:if>
   </div>
   <br/><br/>
+<c:if test="${isUpdateUser == false}">
   <form method="post" action="update-user">
       <input type="submit" name="update-user" value="update-user">
   </form>
+</c:if>
 <%@ include file="go-back.jsp" %>
 </body>
 </html>
