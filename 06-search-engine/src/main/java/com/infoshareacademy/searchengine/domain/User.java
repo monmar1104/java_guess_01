@@ -14,6 +14,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private int id;
     @Column
+    @FirstLetterA
     private String name;
     private String surname;
     private String login;
