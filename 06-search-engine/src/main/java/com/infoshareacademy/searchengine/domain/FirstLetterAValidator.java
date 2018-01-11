@@ -10,8 +10,9 @@ public class FirstLetterAValidator implements ConstraintValidator<FirstLetterA, 
     public void initialize(FirstLetterA constraintAnnotation) {
     }
 
+
     @Override
-    public boolean isValid(String str, ConstraintValidatorContext constraintValidatorContext) {
-        return str.startsWith("A");
+    public boolean isValid(String text, ConstraintValidatorContext constraintValidatorContext) {
+        return text.startsWith("A");
     }
 }
