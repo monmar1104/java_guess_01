@@ -7,11 +7,11 @@ import java.io.Serializable;
 //@Table(name = "users")
 public class Users implements Serializable{
 //    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private int id;
-//    @Column(nullable = false, unique = true)
+//    @Column(nullable = false)
 //    private String login;
-//    @Column(nullable = false, unique = true)
+//    @Column(nullable = false)
 //    private String password;
 //    @Column
 //    private String name;

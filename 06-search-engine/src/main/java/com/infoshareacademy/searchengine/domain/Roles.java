@@ -7,14 +7,14 @@ import java.io.Serializable;
 //@Table(name = "roles")
 public class Roles implements Serializable {
 //    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private int id;
 //
 //    @Column(name = "user_login",nullable = false)
 //    private String userLogin;
-//    @Column(name = "user_role", nullable = false)
+//    @Column(name = "user_role")
 //    private String userRole;
-//    @Column(name = "role_group", nullable = false)
+//    @Column(name = "role_group")
 //    private String userGroup;
 //
 //
