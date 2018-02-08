@@ -33,7 +33,7 @@ Wymień miejsce w którym jest definiowane w `Dockerfile`:
 - Nazwa WAR do deploymentu. W którym katalogu powinien być plik?
 
 #### Zad 4. 
-Wymień miejsca w którym jest konfigurowane w `config/execute.sh`:
+Wymień miejsca w którym jest konfigurowany Wildfly w `config/execute.sh`:
 - Dodanie datasoure
 - Dodanie connectora MySQL
 - Stworzenie użytkownika wildfly
@@ -41,9 +41,12 @@ Wymień miejsca w którym jest konfigurowane w `config/execute.sh`:
 
 #### Zad 5. 
 Uruchomienie własnej aplikacji
+
 a) Zbuduj WARa ze swojej aplikacji
     **Takiej w której nie ma security domain - bo to nie jest skonfigurowane w naszych dockerach. Jeszcze.**
+
 b) Skopiuj je w odpowiednie miejsce
+
 c) Zmień nazwę `datasource` w miejscu z zad 2
 
 #### Zad 6.
@@ -51,6 +54,8 @@ a) Uruchom dockera z przygotowanym obrazem. Przydatne komendy:
 - `docker-compose up`
 - `docker-compose down`
 - W przypadku gdy cos pójdzie krytycznie źle. Można zrobić reset wszystkich obrazków dockerowych: `docker system prune -a` 
+
+Zakończyło się sukcesem czy jest błąd?
 
 b) Uruchom w przeglądarce http://localhost:8081/ i http://localhost:9991/
 - Widzisz swoją aplikację?
