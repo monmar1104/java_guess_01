@@ -15,6 +15,7 @@ Repozytorium z materiałami:
 | 25.11.2017        | [JEE Servlet](./06-jee-servlet.md)
 | 02.12.2017        | [JEE cz.2 - Statystyki](./06-jee-servlet.md)
 | 30.12.2017, 06.01.2018, 13.01.2018        | [JEE cz.3 & Hibernate](./08-jee-hibernate.md)
+| 15.02.2018        | [Docker](./09-docker.md)
 
 
 ## Ogólne warunki zaliczenia
