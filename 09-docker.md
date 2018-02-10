@@ -50,18 +50,21 @@ b) Skopiuj je w odpowiednie miejsce
 c) Zmień nazwę `datasource` w miejscu z zad 2
 
 #### Krok 6.
-a) Uruchom dockera z przygotowanym obrazem. Przydatne komendy:
+
+a) Plik `config/execute.sh` musi byc wykonywalny. Zrob go przez polecenie `chmod +x config/execute.sh` Jako potwierdzenie, sprawdz jego status w `ls -la`.
+
+b) Uruchom dockera z przygotowanym obrazem. Przydatne komendy:
 - `docker-compose up`
 - `docker-compose down`
-- W przypadku gdy cos pójdzie krytycznie źle. Można zrobić reset wszystkich obrazków dockerowych: `docker system prune -a` 
+- W przypadku gdy cos pójdzie krytycznie źle. Można zrobić reset obrazu dockerowego: `docker-compose build` 
 
 Zakończyło się sukcesem czy jest błąd?
 
-b) Uruchom w przeglądarce http://localhost:8081/ i http://localhost:9991/
+c) Uruchom w przeglądarce http://localhost:8081/ i http://localhost:9991/
 - Widzisz swoją aplikację?
 - W panelu admina, zaloguj się (to swieży wildfly - skąd wziąć dane?)
 
-c) Zrób screena:
+d) Zrób screena:
 - Swojej aplikacji na podanym porcie
 - Konfiguracji ekranu z *datasource*
 
