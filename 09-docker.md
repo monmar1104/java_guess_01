@@ -3,7 +3,7 @@
 Żeby przećwiczyć używanie dockera w praktyce oraz ułatwić używanie go w praktce.
 Składa się z kilku zadań, większosć zakładam że *bardzo szybka do przerobienia*. Powodzenia!
 
-#### Zad 0. 
+#### Krok 0. 
 Przeczytaj 3 tutoriale na temat dockera:
 - Częsć 1 (Czas czytania: 4min) - https://docs.docker.com/get-started/
 - Częsć 2 (Czas czytania: 13min) - https://docs.docker.com/get-started/part2/ 
@@ -20,26 +20,26 @@ Jest to konfiguracja kontenera mysql oraz wilfgly wraz z konfiguracją.
 
 *Odpowiedzi wyslij na slacku.*
 
-#### Zad 1. 
+#### Krok 1. 
 Przejrzyj / Przeanalizuj zawartosć plików.
 
-#### Zad 2. 
+#### Krok 2. 
 Wymień miejsce w którym jest definiowane w `docker-composer.yml`:
 - Nazwa bazy danych
 - Nazwa datasource
 
-#### Zad 3. 
+#### Krok 3. 
 Wymień miejsce w którym jest definiowane w `Dockerfile`:
 - Nazwa WAR do deploymentu. W którym katalogu powinien być plik?
 
-#### Zad 4. 
+#### Krok 4. 
 Wymień miejsca w którym jest konfigurowany Wildfly w `config/execute.sh`:
 - Dodanie datasoure
 - Dodanie connectora MySQL
 - Stworzenie użytkownika wildfly
 - Deployment aplikacji
 
-#### Zad 5. 
+#### Krok 5. 
 Uruchomienie własnej aplikacji
 
 a) Zbuduj WARa ze swojej aplikacji
@@ -49,7 +49,7 @@ b) Skopiuj je w odpowiednie miejsce
 
 c) Zmień nazwę `datasource` w miejscu z zad 2
 
-#### Zad 6.
+#### Krok 6.
 a) Uruchom dockera z przygotowanym obrazem. Przydatne komendy:
 - `docker-compose up`
 - `docker-compose down`
@@ -65,7 +65,7 @@ c) Zrób screena:
 - Swojej aplikacji na podanym porcie
 - Konfiguracji ekranu z *datasource*
 
-#### Zad 7. 
+#### Krok 7. 
 - Zrób małą ale widoczną zmianę w aplikacji
 - przebuduj ją i przekopiuj do katalogu z dockerem
 - Uruchom obraz dockera jeszcze raz
