@@ -1,4 +1,4 @@
-**Zadanie z dockera (do 01.03.2018)**
+**Zadanie z budowanie klienta API (do 01.03.2018)**
 
 Bazując na zadaniach z [warsztatu API](https://github.com/infoshareacademy/jjdz4-materialy-api-rest-soap/) (projekt google-client),
 napisz klienta dla serwisu [restcountries.eu](https://restcountries.eu/)
