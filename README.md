@@ -14,7 +14,7 @@ Repozytorium z materiałami:
 | 18.11.2017        | [Java 8 + jUnit](./05-java8-junit.md)
 | 25.11.2017        | [JEE Servlet](./06-jee-servlet.md)
 | 02.12.2017        | [JEE cz.2 - Statystyki](./06-jee-servlet.md)
-| 30.12.2017, 06.01.2018, 13.01.2018        | [JEE cz.3 & Hibernate](./08-jee-hibernate.md)
+| 30.12.2017 <br>06.01.2018 <br>13.01.2018        | [JEE cz.3 & Hibernate](./08-jee-hibernate.md)
 | 15.02.2018        | [Docker](./09-docker.md)
 | 01.03.2018        | [API Client](./10-api-client.md)
 
