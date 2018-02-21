@@ -1,4 +1,4 @@
-**Zadanie z dockera (do 14.01.2018)**
+**Zadanie z dockera (do 15.02.2018)**
 
 Żeby przećwiczyć używanie dockera w praktyce oraz ułatwić używanie go w praktce.
 Składa się z kilku zadań, większosć zakładam że *bardzo szybka do przerobienia*. Powodzenia!
