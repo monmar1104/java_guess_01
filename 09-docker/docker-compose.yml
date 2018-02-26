@@ -18,7 +18,7 @@ services:
       - MYSQL_DATABASE=jjdz4-db
       - MYSQL_USER=homework
       - MYSQL_PASSWORD=homework
-      - DATASOURCE_NAME=java:/SimpleDS
+      - DATASOURCE_NAME=java:/WDYWDs
     ports:
       - 8081:8080
       - 9991:9990

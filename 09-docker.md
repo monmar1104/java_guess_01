@@ -25,19 +25,20 @@ Przejrzyj / Przeanalizuj zawartosć plików.
 
 #### Krok 2. 
 Wymień miejsce w którym jest definiowane w `docker-composer.yml`:
-- Nazwa bazy danych
-- Nazwa datasource
+- Nazwa bazy danych: services/jjdz4-db:/environment: - MYSQL_DATABASE=jjdz4-db
+- Nazwa datasource: services/jjdz4-web-app:/environment: - DATASOURCE_NAME=java:/SimpleDS
 
 #### Krok 3. 
 Wymień miejsce w którym jest definiowane w `Dockerfile`:
-- Nazwa WAR do deploymentu. W którym katalogu powinien być plik?
+- Nazwa WAR do deploymentu: COPY web-app.war 
+W którym katalogu powinien być plik?: podajemy ścieżkę pliku w kontekście polecenia build
 
 #### Krok 4. 
 Wymień miejsca w którym jest konfigurowany Wildfly w `config/execute.sh`:
-- Dodanie datasoure
-- Dodanie connectora MySQL
-- Stworzenie użytkownika wildfly
-- Deployment aplikacji
+- Dodanie datasoure: data-source add --name=mysqlDS --driver-name=mysql --jndi-name=$DATASOURCE_NAME
+- Dodanie connectora MySQL: module add --name=com.mysql --resources=/opt/jboss/wildfly/config/mysql-connector-java-6.0.6.jar
+- Stworzenie użytkownika wildfly: /opt/jboss/wildfly/bin/add-user.sh admin abcd1234 --silent
+- Deployment aplikacji: cp /opt/jboss/wildfly/config/*.war $JBOSS_HOME/$JBOSS_MODE/deployments/
 
 #### Krok 5. 
 Uruchomienie własnej aplikacji
