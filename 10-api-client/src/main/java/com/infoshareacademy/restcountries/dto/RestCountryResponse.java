@@ -1,7 +1,9 @@
 package com.infoshareacademy.restcountries.dto;
 
 import java.util.List;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RestCountryResponse {
 
         private String name;

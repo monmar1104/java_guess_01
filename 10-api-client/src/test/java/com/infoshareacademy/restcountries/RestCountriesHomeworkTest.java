@@ -32,7 +32,7 @@ public class RestCountriesHomeworkTest {
 
         final List<RestCountryResponse> countries = restCountries.findByCurrency(currency);
 //        FIXME: Make this code working and passing test
-//        assertThat(countries.get(0).getName(), is("Poland"));
+       assertThat(countries.get(0).getName(), is("Poland"));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class RestCountriesHomeworkTest {
         final String currency = "USD";
 
         final List<RestCountryResponse> countries = restCountries.findByCurrency(currency);
-        assertThat(countries.size(), is(35));
+        assertThat(countries.size(), is(20));
     }
 
     @Test
@@ -58,6 +58,6 @@ public class RestCountriesHomeworkTest {
 
         final List<String> neighboursCodes = restCountries.findCommonStateNeighbours(countryName, otherCountryName);
         assertThat(neighboursCodes.size(), is(2));
-        assertThat(neighboursCodes, hasItems("GER", "SVK"));
+        assertThat(neighboursCodes, hasItems("DEU", "SVK"));
     }
 }
